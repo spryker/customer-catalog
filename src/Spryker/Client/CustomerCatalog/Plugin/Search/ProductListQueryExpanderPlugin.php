@@ -51,11 +51,6 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         return $searchQuery;
     }
 
-    /**
-     * @param \Elastica\Query $query
-     *
-     * @return void
-     */
     protected function expandQueryWithBlacklistFilter(Query $query): void
     {
         $blacklistIds = $this->getBlacklistIds();
@@ -65,11 +60,6 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         }
     }
 
-    /**
-     * @param \Elastica\Query $query
-     *
-     * @return void
-     */
     protected function expandQueryWithWhitelistFilter(Query $query): void
     {
         $whitelistIds = $this->getWhitelistIds();
@@ -80,21 +70,11 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         }
     }
 
-    /**
-     * @param array $blacklistIds
-     *
-     * @return \Elastica\Query\Terms
-     */
     protected function createBlacklistTermQuery(array $blacklistIds): Terms
     {
         return new Terms(PageIndexMap::PRODUCT_LISTS_BLACKLISTS, $blacklistIds);
     }
 
-    /**
-     * @param array $whitelistIds
-     *
-     * @return \Elastica\Query\Terms
-     */
     protected function createWhitelistTermQuery(array $whitelistIds): Terms
     {
         return new Terms(PageIndexMap::PRODUCT_LISTS_WHITELISTS, $whitelistIds);
@@ -128,9 +108,6 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         return $customerProductListCollectionTransfer->getWhitelistIds() ?: [];
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerProductListCollectionTransfer|null
-     */
     protected function findCustomerProductListCollection(): ?CustomerProductListCollectionTransfer
     {
         $customer = $this->getCustomer();
@@ -146,9 +123,6 @@ class ProductListQueryExpanderPlugin extends AbstractPlugin implements QueryExpa
         return null;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer|null
-     */
     protected function getCustomer(): ?CustomerTransfer
     {
         if (!static::$customerRequested) {

@@ -12,9 +12,6 @@ use Spryker\Client\Kernel\AbstractFactory;
 
 class CustomerCatalogFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\CustomerCatalog\Dependency\Client\CustomerCatalogToCustomerClientInterface
-     */
     public function getCustomerClient(): CustomerCatalogToCustomerClientInterface
     {
         return $this->getProvidedDependency(CustomerCatalogDependencyProvider::CLIENT_CUSTOMER);
